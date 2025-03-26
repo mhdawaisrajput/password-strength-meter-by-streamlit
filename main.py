@@ -51,6 +51,8 @@ def password_strength_checker(password):
         suggested = suggest_password()
         messages.append("🔑 Suggested Strong Password: " + suggested + " 💡")
         return score, max_score, messages
+    
+    
 
     # Check length
     if len(password) >= 8:
@@ -76,16 +78,17 @@ def password_strength_checker(password):
     else:
         messages.append("❌ Password must contain at least one special character (!@#$%^&*()_+{}\\[\\]:;<>,.?~\\). ✨")
         
-
+    messages.append(f"📊 Score: {score} out of {max_score}")
+    
     if score == max_score:
-        messages.append("✅ Password is strong! 💪")
+         messages.append(f"✅ Password is strong! 💪")
     elif score >= (max_score * 0.67):  # 67% or above is moderate
         messages.append("⚠ Moderate Password; consider adding more security features. 🤔")
     else:
         messages.append("❌ Password is weak; please improve it by following the instructions above. 🛠️")
         suggested = suggest_password()
         messages.append("🔑 Suggested Strong Password: " + suggested + " 💡")
-        messages.append(f"📊 Score: {score} out of {max_score}")
+        
 
     return score, max_score, messages
 
